@@ -1,0 +1,38 @@
+{
+  "name": "onu-consulting",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "loadTest": "npx autocannon -m POST -H 'Content-Type: application/json' -b '{\n    \"user\": \"admin\",\n    \"pass\": \"admin\",\"command\": \"LST-DEVICE:::CTAG::;\"\n}' -c 20 -d 1 -w 1 http://localhost:3000/api/v1/execute",
+    "loadTest2": "npx autocannon -c 10 -d 60 -w 2 http://localhost:3000/api/v1/result/fBaCz0Rdb7ebjk3jzwyBu"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "bull": "^4.16.0",
+    "dotenv": "^16.4.5",
+    "fastify": "^4.28.1",
+    "mongoose": "^8.5.2",
+    "nanoid": "^5.0.7",
+    "net": "^1.0.2",
+    "winston": "^3.13.1"
+  },
+  "exports": {
+    ".": "./src/server.js",
+    "./utils": "./src/utils/index.js",
+    "./services": "./src/services/index.js"
+  },
+
+  "devDependencies": {
+    "@bull-board/fastify": "^5.21.1",
+    "nodemon": "^3.1.4",
+    "webpack": "^5.93.0"
+  }
+}
